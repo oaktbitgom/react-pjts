@@ -16,7 +16,7 @@ export default function TaskForm({ onAdd }) {
           type="text"
           value={taskName}
           onChange={(ev) => setTaskName(ev.target.value)}
-          placeHolder="Your next task..."
+          placeholder="Your next task..."
         />
       </form>
     </div>

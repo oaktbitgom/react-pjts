@@ -4,7 +4,7 @@ import Task from "./Task";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [tasks, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     if (tasks.length === 0) return;
@@ -13,19 +13,29 @@ function App() {
 
   useEffect(() => {
     const tasks = JSON.parse(localStorage.getItem("tasks"));
-    setTask(tasks);
-  });
+    setTasks(tasks);
+  }, []);
+
   function addTask(name) {
-    setTask((prev) => {
+    setTasks((prev) => {
       return [...prev, { name: name, done: false }];
+    });
+  }
+
+  function updateTaskDone(taskIndex, newDone) {
+    setTasks((prev) => {
+      const newTasks = [...prev];
+      newTasks[taskIndex].done = newDone;
+
+      return newTasks;
     });
   }
 
   return (
     <main>
       <TaskForm onAdd={addTask} />
-      {tasks.map((task) => (
-        <Task {...task} />
+      {tasks.map((task, index) => (
+        <Task {...task} onToggle={(done) => updateTaskDone(index, done)} />
       ))}
     </main>
   );
