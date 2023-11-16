@@ -22,6 +22,7 @@ form input[type="text"] {
   padding: 0px 8px;
   display: block;
   width: 100%;
+  color: #fff;
 }
 form button {
   background-color: #61dafb;
