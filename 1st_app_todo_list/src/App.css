@@ -48,6 +48,9 @@ div.task svg {
 div.task.done {
   opacity: 0.3;
 }
+div.task-name {
+  flex-grow: 1;
+}
 div.task span {
   position: relative;
 }
@@ -68,4 +71,20 @@ div.task.done span:before {
 h1,
 h2 {
   text-align: center;
+}
+
+div.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+button.trash {
+  background: none;
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+button.trash svg {
+  fill: #888;
+  height: 14px;
 }
