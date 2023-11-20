@@ -31,6 +31,14 @@ function App() {
     });
   }
 
+  function renameTask(index, newName) {
+    setTasks((prev) => {
+      const newTasks = [...prev];
+      newTasks[index].name = newName;
+      return newTasks;
+    });
+  }
+
   function updateTaskDone(taskIndex, newDone) {
     setTasks((prev) => {
       const newTasks = [...prev];
@@ -60,9 +68,11 @@ function App() {
       <TaskForm onAdd={addTask} />
       {tasks.map((task, index) => (
         <Task
+          key={task.name + index}
           {...task}
           onToggle={(done) => updateTaskDone(index, done)}
           onTrash={() => removeTask(index)}
+          onEdit={(newName) => renameTask(index, newName)}
         />
       ))}
     </main>
